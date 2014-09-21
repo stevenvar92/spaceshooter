@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<!--  Ships table
+	- ID 	 			(int) 			(make sure unique (increment by 1)!)
+	- Type 		 		(string) 		(the object's internal name)
+	- SpeedX 			(float) 		(speed in x direction, meters per second)
+	- SpeedY 			(float) 		(speed in y direction, meters per second)
+	- Health 			(float) 		(total health)
+	- Shield 			(float) 		(total shield)
+	- ShieldRecharge	(int)			(shield recharge time, in ms)
+	- SizeX 			(float) 		(size in x direction, meters)
+	- SizeY 			(float) 		(size in y direction, meters )
+	- XPModifier		(int)			(experience modifier, in percentage (100% is default))
+	- ImageFile 		(string)		(the image file)
+-->
+
+<Ships>
+	<Row>
+		<ID>0</ID>
+		<Type>SHIP_PLAYER</Type>
+		<SpeedX>720.0f</SpeedX>
+		<SpeedY>420.0f</SpeedY>
+		<Health>100.0f</Health>
+		<Shield>100.0f</Shield>
+		<ShieldRecharge>3000</ShieldRecharge>
+		<SizeX>50.0f</SizeX>
+		<SizeY>30.0f</SizeY>
+		<XPModifier>0</XPModifier>
+		<ImageFile>player_idle.png</ImageFile>
+	</Row>
+	<Row>
+		<ID>1</ID>
+		<Type>SHIP_SMALL</Type>
+		<SpeedX>640.0f</SpeedX>
+		<SpeedY>456.0f</SpeedY>
+		<Health>100.0f</Health>
+		<Shield>0.0f</Shield>
+		<ShieldRecharge>0</ShieldRecharge>
+		<SizeX>28.0f</SizeX>
+		<SizeY>28.0f</SizeY>
+		<XPModifier>100</XPModifier>
+		<ImageFile>enemy_idle_test.png</ImageFile>
+	</Row>
+	<Row>
+		<ID>2</ID>
+		<Type>SHIP_MEDIUM</Type>
+		<SpeedX>200.0f</SpeedX>
+		<SpeedY>100.0f</SpeedY>
+		<Health>500.0f</Health>
+		<Shield>500.0f</Shield>
+		<ShieldRecharge>0</ShieldRecharge>
+		<SizeX>80</SizeX>
+		<SizeY>60</SizeY>
+		<XPModifier>100</XPModifier>
+		<ImageFile>enemy_idle_test.png</ImageFile>
+	</Row>
+</Ships>

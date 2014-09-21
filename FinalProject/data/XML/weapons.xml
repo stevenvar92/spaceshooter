@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!--  Projectile table
+	- ID 	 			(int) 			(make sure unique (increment by 1)!)
+	- Type 		 		(string) 		(the object's internal name)
+	- RateOfFire 		(int) 			(rate of fire (in RPM))
+	- BulletVelocity 	(int) 			(speed of the fired projectile (in m/s))
+	- Damage			(float)			(damage of the gun)
+	- ProjectileType 	(string)		(ProjectileType)
+	- Volley			(int)			(Amount of projectiles fired in a volley. If greater than 1, they will be fired in front of the player a small distance apart (vertically))
+	- Remote			(boolean)		(If true, missile must be manually detonated)
+	- BlastRadius		(float)			(Blast radius. If greater than 0, the projectile will have a circular collision at the specified radius)
+	- IsSecondary		(boolean)		(Is this a secondary?)
+-->
+
+<Weapons>
+	<Row>
+		<ID>0</ID>
+		<Type>WEAPON_DEFAULT</Type>
+		<RateOfFire>600</RateOfFire>
+		<BulletVelocity>2000</BulletVelocity>
+		<Damage>50.0</Damage>
+		<ProjectileType>PROJECTILE_NORMAL</ProjectileType>
+		<Volley>0</Volley>
+		<Remote>false</Remote>
+		<BlastRadius>0.0</BlastRadius>
+		<IsSecondary>false</IsSecondary>
+	</Row>
+	<Row>
+		<ID>1</ID>
+		<Type>WEAPON_ENEMY</Type>
+		<RateOfFire>60</RateOfFire>
+		<BulletVelocity>800</BulletVelocity>
+		<Damage>80.0</Damage>
+		<ProjectileType>PROJECTILE_NORMAL</ProjectileType>
+		<Volley>0</Volley>
+		<Remote>false</Remote>
+		<BlastRadius>0.0</BlastRadius>
+		<IsSecondary>false</IsSecondary>
+	</Row>
+	<Row>
+		<ID>2</ID>
+		<Type>WEAPON_MISSILE_VOLLEY</Type>
+		<RateOfFire>2</RateOfFire>
+		<BulletVelocity>1400</BulletVelocity>
+		<Damage>240.0</Damage>
+		<ProjectileType>PROJECTILE_MISSILE</ProjectileType>
+		<Volley>5</Volley>
+		<Remote>false</Remote>
+		<BlastRadius>0.0</BlastRadius>
+		<IsSecondary>true</IsSecondary>
+	</Row>
+	<Row>
+		<ID>3</ID>
+		<Type>WEAPON_LYNX</Type>
+		<RateOfFire>600</RateOfFire>
+		<BulletVelocity>600</BulletVelocity>
+		<Damage>400.0</Damage>
+		<ProjectileType>PROJECTILE_LYNX_MISSILE</ProjectileType>
+		<Volley>0</Volley>
+		<Remote>true</Remote>
+		<BlastRadius>150.0</BlastRadius>
+		<IsSecondary>true</IsSecondary>
+	</Row>
+</Weapons>

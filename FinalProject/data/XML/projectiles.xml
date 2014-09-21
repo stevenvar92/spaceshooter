@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<!--  Projectile table
+	- ID 	 			(int) 			(make sure unique (increment by 1)!)
+	- Type 		 		(string) 		(the object's internal name)
+	- SizeX 			(int) 			(size in x direction, meters)
+	- SizeY 			(int) 			(size in y direction, meters )
+	- ImageFile 		(string)		(the image file)
+	- CanPenetrate		(boolean)		(whether or not the projectile survives contact with another ship)
+-->
+
+<Projectiles>
+	<Row>
+		<ID>0</ID>
+		<Type>PROJECTILE_NORMAL</Type>
+		<SizeX>6</SizeX>
+		<SizeY>3</SizeY>
+		<ImageFile>projectile_normal.png</ImageFile>
+		<CanPenetrate>false</CanPenetrate>
+	</Row>
+	<Row>
+		<ID>1</ID>
+		<Type>PROJECTILE_MISSILE</Type>
+		<SizeX>12</SizeX>
+		<SizeY>6</SizeY>
+		<ImageFile>projectile_missile.png</ImageFile>
+		<CanPenetrate>false</CanPenetrate>
+	</Row>
+	<Row>
+		<ID>2</ID>
+		<Type>PROJECTILE_LYNX_MISSILE</Type>
+		<SizeX>16</SizeX>
+		<SizeY>8</SizeY>
+		<ImageFile>projectile_missile.png</ImageFile>
+		<CanPenetrate>false</CanPenetrate>
+	</Row>
+</Projectiles>

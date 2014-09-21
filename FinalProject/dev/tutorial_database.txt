@@ -1,0 +1,83 @@
+Database Loading
+----------------------
+Let's say you want to create a new XML. This XML will load new data into the game (for example, we want to define an asteroid obstacle).
+
+We would create a new file called "obstacles.xml" or something. Place this into /FinalProject/data/XML/
+The format of the XML must be like this:
+
+<Obstacles>
+	<Row>
+		<ID>0</ID>
+		<Type>OBSTACLE_ASTEROID</Type>
+		<Health>100.0f</Health>
+	</Row>
+	<Row>
+		<ID>1</ID>
+		<Type>OBSTACLE_PLANET</Type>
+		<Health>100000.0f</Health>
+	</Row>
+</Obstacles>
+
+To load data from XML into the database, you need two classes:
+
+- Entry class (an actual XML entry) 					- extends BaseInfo class
+- XMLEntries class (stores an ArrayList of Entry objects)
+
+In the Globals class, you must:
+
+- Declare a new XMLEntries object.	// e.g. ObstacleXMLEntries g_obstacles
+- In Globals() constructor, make sure you allocate a new XMLEntries() object.	// e.g. g_obstacles = new ObstacleXMLEntries();
+- You need to write three simple functions:
+	- GetGameObject()				// Returns the object declared in Globals e.g. ObstacleXMLEntries g_obstacles
+	- GetEntries()					// Returns the ArrayList with all the entries e.g. ArrayList<ObstacleEntry> GetGameObstacleEntries()
+	- GetEntry(int index) 			// Returns a single entry from the XML entries ArrayList e.g. ObstacleEntry GetGameObstacleEntry(int index)
+	
+Your Entry class must overload the LoadData(XML row) function.
+In this LoadData function, you will make calls to the following functions:
+- super.LoadData(XML row)				// calls BaseInfo's LoadData function. This will load the ID and Type and other basic data for you.
+
+// looks up the column name in the XML row. Stores it's value in the specified type, so it can be assigned to a variable
+// If a column name does not exist, an error message will be generated.
+- DB_GetInt(XML row, String column)		// store in int variable
+- DB_GetBool(XML row, String column)	// store in bool variable
+- DB_GetFloat(XML row, String column)	// store in float variable
+- DB_GetString(XML row, String column)	// store in string variable
+
+// e.g. health = DB_GetFloat(row, "Health");	// will fetch the Health column from the XML and assign it to the variable float in your Entry class.
+
+In the XMLDatabaseLoader file, you must do two things:
+	- Modify the LoadGameData() function to read in your new table
+	- Overload the DB_LoadTable() function with your necessary class type
+	
+In LoadGameData(), you must add these lines that correspond to your new file or table:
+Note: the object "GC" refers to the Globals object.
+
+if(DB_LoadFile("yourfilename.xml"))
+{
+	DB_LoadTable(GC.GetEntries());		// this is the GetEntries() function you specified in the Globals class
+}
+
+An example using the Obstacle class would be:
+
+if(DB_LoadFile("obstacles.xml"))
+{
+	DB_LoadTable(GC.GetGameObstacleEntries());
+}
+
+To overload DB_LoadTable, simply copy the following code with your new entry type:
+
+void DB_LoadTable(ArrayList<YourEntry> array)
+{
+  YourEntry obj;
+  XML[] rows = xml.getChildren("Row");
+  for(int idx_row = 0; idx_row < rows.length; idx_row++)
+  {
+    obj = new YourEntry();
+    obj.LoadData(rows[idx_row]);        // load it's XML data in to the object
+    array.add(obj);                     // add this object entry into the game's data array
+  }
+}
+
+Remember to replace all instances of YourEntry with your entry (e.g. ObstacleEntry)!
+
+That's it!
